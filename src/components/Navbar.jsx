@@ -9,6 +9,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import Settings from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -30,7 +31,7 @@ export const Navbar = () => {
         justifyContent: "space-between",
       }}
     >
-      <Typography sx={{ fontSize: 60, fontWeight: "bold" }}>sensAI</Typography>
+      <Typography sx={{ fontSize: 60, fontWeight: "bold" }}><Link to="/" className="navbar-link">sensAI</Link></Typography>
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -51,11 +52,11 @@ export const Navbar = () => {
       >
         <MenuItem onClick={handleClose}>
           <AssignmentIcon sx={{ mr: 2 }} />
-          Assignment
+          <Link to="/student/assignments" className="navbar-link">Assignment</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <SchoolIcon sx={{ mr: 2 }} />
-          Lesson
+          <Link to="/teachers/home" className="navbar-link">Lesson</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Settings sx={{ mr: 2 }} />
