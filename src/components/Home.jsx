@@ -16,7 +16,7 @@ const Home = ({ user }) => {
 
   return (
     <>
-      <div>Welcome to SensAI!</div>;{userStatus}
+      <div>Welcome to SensAI!</div>{userStatus}
     </>
   );
 };

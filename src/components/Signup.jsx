@@ -7,16 +7,24 @@ import { auth } from "../firebase";
 const Signup = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [newUser, setNewUser] = useState({
+  "name": "mr",
+  "surname": "bean",
+  "email": "mr@bean.com",
+  "role": "student",
+  "disability": "ADHD"
+  })
+
   const [password, setPassword] = useState("");
+
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    await createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, newUser.email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        postUserFromFirebase(email);
+        postUserFromFirebase(newUser);
         navigate("/login");
       })
       .catch((error) => {

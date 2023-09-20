@@ -24,11 +24,15 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const { user: fetchedUser } = await getUser(user.email);
-        setUser(fetchedUser);
-      } else {
-        setUser("logged out");
+      try {
+        if (user) {
+          const { user: fetchedUser } = await getUser(user.email);
+          setUser(fetchedUser);
+        } else {
+          setUser("logged out");
+        }
+      } catch {
+        
       }
     });
   }, []);

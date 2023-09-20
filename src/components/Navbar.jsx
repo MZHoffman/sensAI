@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { LoginButton } from "./LoginButton";
 import {auth} from './../firebase';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 export const Navbar = ({user}) => {
@@ -47,7 +48,7 @@ export const Navbar = ({user}) => {
         mb: 5
       }}
     >
-      <Typography sx={{ fontSize: 60, fontWeight: "bold" }}>sensAI</Typography>
+      <Typography sx={{ fontSize: 60, fontWeight: "bold" }}><Link to="/">sensAI</Link></Typography>
       {userStatus}
       
     </Container>
