@@ -28,7 +28,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode, error.message);
+        //console.log(errorCode, error.message);
 
         let errorMessage =
           errorCode === "auth/invalid-login-credentials"
@@ -88,6 +88,12 @@ const Login = () => {
         No account yet?{" "}
         <MUILink component={NavLink} to="/signup" underline="hover">
           Sign up
+        </MUILink>
+      </Typography>
+      <Typography variant="body2" align="center">
+        Forgotten password?{" "}
+        <MUILink component={NavLink} underline="hover">
+          Reset Password
         </MUILink>
       </Typography>
 
