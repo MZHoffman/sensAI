@@ -31,20 +31,34 @@ const Signup = () => {
     event.preventDefault();
     if (newUser.password !== newUser.confirmPassword) {
       setError("Passwords do not match.");
+      setPosting(false);
+      return;
+    }else if (newUser.password.length < 8){
+      setError("Password length needs to be 8 characters");
+      setPosting(false);
+      return;
+    }else if (!/[A-Z]/.test(newUser.password)){
+      setError("Password requires an upper and lower case letter")
+      setPosting(false);
+      return;
+    }else if (!/.*[0-9].*/.test(newUser.password)){
+      setError("Password requires a number")
+      setPosting(false);
       return;
     }
-    setPosting(true);
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        newUser.email,
-        newUser.password
-      );
-      await postNewUser(newUser);
-      navigate("/");
-    } catch (error) {
-      console.log("Error during account creation: ", error);
-
+    
+    setPosting(false);
+      try {
+        await createUserWithEmailAndPassword(
+          auth,
+          newUser.email,
+          newUser.password
+        );
+        await postNewUser(newUser);
+        navigate("/");
+      } catch (error) {
+        //console.log("Error during account creation: ", error);
+      }
       let errorMessage = "";
       switch (error.code) {
         case "auth/invalid-email":
@@ -60,17 +74,16 @@ const Signup = () => {
         default:
           errorMessage = "Failed to create an account. Please try again.";
       }
-
+  
       setError(errorMessage);
       setPosting(false);
-    }
+
   };
 
   const handleChange = (event) => {
     const newUserState = { ...newUser, [event.target.id]: event.target.value };
     setNewUser(newUserState);
   };
-
   return (
     <Container component="main" maxWidth="xs">
       <Typography variant="h5" align="center" gutterBottom>
