@@ -1,9 +1,5 @@
-/* eslint-disable react/prop-types */
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import SchoolIcon from "@mui/icons-material/School";
-import { Link } from "@mui/material";
+import { Link, Grid, Paper, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import moment from "moment";
@@ -14,7 +10,6 @@ export function TeacherAssignmentCard({ teacherAssignmentData }) {
   const handleClick = () => {
     navigate(`/teacher/assignments/feedback/${teacherAssignmentData.id}`);
   };
-
   useEffect(() => {
     if (teacherAssignmentData && teacherAssignmentData.work) {
       let counter = 0;
