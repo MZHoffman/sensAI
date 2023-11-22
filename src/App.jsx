@@ -51,11 +51,13 @@ function App() {
       {/* <Header /> Most likely used for home page/login */}
       <Navbar user={currentUser} />
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/students" element={<StudentPage />} />
         <Route
           path="/student/assignments"
           element={<StudentAssignmentsPage user={currentUser} />}
         />
-        <Route path="/teachers/home" element={<ClassesList />} />
         <Route
           path="/student/assignments/:assignment_id"
           element={<DisplayStudentAssignment user={currentUser} />}
@@ -64,8 +66,7 @@ function App() {
           path="/student/lessons"
           element={<StudentLessonsPage user={currentUser} />}
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/teachers/home" element={<ClassesList />} />
         <Route
           path="/teacher/lessons/:class_id"
           element={<TeacherLessonsClassList user={currentUser} />}
@@ -97,7 +98,6 @@ function App() {
           path="/teacher/classes/:class_id/assignments"
           element={<TeacherClassClassIDAssignmentsList user={currentUser} />}
         />
-        <Route path="/students" element={<StudentPage />} />
         <Route
           path="/teacher/classes/:class_id"
           element={<StudentPage user={currentUser} />}
